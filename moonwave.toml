@@ -1,0 +1,20 @@
+[home]
+enabled = true
+
+[[home.features]]
+title = "Easy-to-use"
+description = "SimpleRay is easy-to-use as it only requires one statement."
+
+[[home.features]]
+title = "Useful"
+description = "The library has a variety of features such as custom part filters or setting the maximum amount of parts the ray can go through."
+
+[[home.features]]
+title = "Easy debugging"
+description = "Easily visualize rays with this library."
+
+classOrder = [
+    "SimpleRay",
+    "RaycastUtil",
+    "TableUtil"
+]
