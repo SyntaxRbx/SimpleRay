@@ -69,6 +69,7 @@ local DefaultOptions = {
 
 --[=[
     @prop Origin Vector3
+	@required
     @within SimpleRay
 
     The ray origin.
