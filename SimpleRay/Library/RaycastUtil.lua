@@ -74,12 +74,13 @@ function RaycastUtil:Cast(origin: Vector3, direction: Vector3, maxParts: number?
 end
 
 --[=[
-    Visualize a ray.
+    Visualizes a ray.
 
     @param origin Vector3 -- The origin position
     @param position Vector3 -- The end position
     @param time number -- The time the part will stay
     @param color Color3 -- The color of the part
+    @return BasePart
 ]=]
 function RaycastUtil:VisualizeRay(origin: Vector3, position: Vector3, time: number, color: Color3?)
 	color = color or Color3.fromRGB(255, 0, 0)
@@ -120,13 +121,21 @@ function RaycastUtil:VisualizeRay(origin: Vector3, position: Vector3, time: numb
 	return ray
 end
 
+--[=[
+    Marks a part for a set amount of time using [Highlights](https://create.roblox.com/docs/reference/engine/classes/Highlight).
+
+    @param inst BasePart -- The instance to mark
+    @param time number -- The time to mark the part
+    @param color Color3 -- the highlight color
+    @return Highlight
+]=]
 function RaycastUtil:MarkPart(inst: Instance, time: number, color: Color3?)
 	color = color or Color3.fromRGB(255, 0, 0)
 	
 	local highlight = Instance.new("Highlight")
 	highlight.Name = "Highlight"
 	highlight.DepthMode = Enum.HighlightDepthMode.Occluded
-	highlight.OutlineColor = Color3.fromRGB(255, 0, 0)
+	highlight.OutlineColor = color
 	highlight.OutlineTransparency = 0.5
 	highlight.Adornee = inst
 	highlight.Parent = workspace.Terrain.SimpleRayDebug
