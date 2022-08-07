@@ -76,10 +76,10 @@ end
 --[=[
     Visualizes a ray.
 
-    @param origin Vector3 -- The origin position
-    @param position Vector3 -- The end position
-    @param time number -- The time the part will stay
-    @param color Color3 -- The color of the part
+    @param origin Vector3
+    @param position Vector3
+    @param time number
+    @param color Color3? -- Defaults to RGB(255, 0, 0)
     @return BasePart
 ]=]
 function RaycastUtil:VisualizeRay(origin: Vector3, position: Vector3, time: number, color: Color3?)
@@ -124,9 +124,9 @@ end
 --[=[
     Marks a part for a set amount of time using [Highlights](https://create.roblox.com/docs/reference/engine/classes/Highlight).
 
-    @param inst BasePart -- The instance to mark
-    @param time number -- The time to mark the part
-    @param color Color3 -- the highlight color
+    @param inst Instance
+    @param time number
+    @param color Color3? -- Defaults to RGB(255, 0, 0)
     @return Highlight
 ]=]
 function RaycastUtil:MarkPart(inst: Instance, time: number, color: Color3?)
