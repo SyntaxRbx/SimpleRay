@@ -134,6 +134,10 @@ function SimpleRay.new(raycastOptions: RaycastOptions)
 	
 	self.Params.IgnoreWater = self.Params.IgnoreWater or DefaultOptions.Params.IgnoreWater
 	self.Params.Blacklist = self.Params.Blacklist or DefaultOptions.Params.Blacklist
+
+	if Config.Debug then
+		warn("CASTING_RAY: " .. tick())
+	end
 	
 	setmetatable(self, SimpleRay)
 	
@@ -157,6 +161,10 @@ function SimpleRay.new(raycastOptions: RaycastOptions)
 		self.Result.Position = raycastResult.RaycastResult.Position
 		self.Result.Normal = raycastResult.RaycastResult.Normal
 		self.Result.Instances = raycastResult.Parts
+	end
+
+	if Config.Debug then
+		warn("DONE_CASTING_RAY: " .. tick())
 	end
 	
 	return self

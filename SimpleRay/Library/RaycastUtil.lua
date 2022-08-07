@@ -1,6 +1,8 @@
 local TweenService = game:GetService("TweenService")
 local Debris = game:GetService("Debris")
 
+local Config = require(script.Parent.Parent.Config)
+
 local TableUtil = require(script.Parent.Parent.Vendor.RbxUtil.TableUtil)
 
 --[=[
@@ -30,8 +32,10 @@ function RaycastUtil:Cast(origin: Vector3, direction: Vector3, maxParts: number?
 		if raycastResult and raycastResult.Instance then
 			raycastParams.FilterDescendantsInstances = TableUtil.Extend(raycastParams.FilterDescendantsInstances, { raycastResult.Instance })
 			if not filter(raycastResult.Instance) then
+                if Config.Debug then warn("PART_IGNORE: " .. raycastResult.Instance.Name) end
 				continue
 			end
+            if Config.Debug then warn("ADD_PART: " .. raycastResult.Instance.Name) end
 			lastRaycastResult = raycastResult
 			table.insert(parts, {
 				Instance = raycastResult.Instance,
@@ -52,6 +56,14 @@ function RaycastUtil:Cast(origin: Vector3, direction: Vector3, maxParts: number?
 		self:VisualizeRay(origin, lastRaycastResult.Position, 2)
 		for i, part in ipairs(parts) do
 			self:MarkPart(part.Instance, 2)
+		end
+	end
+
+    if Config.Debug then
+		print("PARTS_AMOUNT: " .. #parts)
+		if lastRaycastResult then
+			print("HIT_POSITION:", lastRaycastResult.Position)
+			print("HIT_PART: " .. lastRaycastResult.Instance.Name)
 		end
 	end
 	
