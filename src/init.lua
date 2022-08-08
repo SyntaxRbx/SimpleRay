@@ -69,7 +69,6 @@ local DefaultOptions = {
 
 --[=[
     @prop Origin Vector3
-	@required
     @within SimpleRay
 
     The ray origin.
@@ -132,16 +131,16 @@ function SimpleRay.new(raycastOptions: RaycastOptions)
 	self.IgnoreTransparency = raycastOptions.IgnoreTransparency or DefaultOptions.IgnoreTransparency
 	self.CustomFilter = raycastOptions.CustomFilter or DefaultOptions.CustomFilter
 	self.Visualize = raycastOptions.Visualize or DefaultOptions.Visualize
-	
+
 	self.Params.IgnoreWater = self.Params.IgnoreWater or DefaultOptions.Params.IgnoreWater
 	self.Params.Blacklist = self.Params.Blacklist or DefaultOptions.Params.Blacklist
 
 	if Config.Debug then
 		warn("CASTING_RAY: " .. tick())
 	end
-	
+
 	setmetatable(self, SimpleRay)
-	
+
 	local filterCheck = SimpleRay.GetFilterCheck({
 		{raycastOptions.IgnoreCollideOffParts, function(inst: Instance)
 			return SafeProperty:GetCanCollide(inst)
@@ -152,9 +151,9 @@ function SimpleRay.new(raycastOptions: RaycastOptions)
 		end},
 		{raycastOptions.CustomFilter, raycastOptions.CustomFilter}
 	})
-	
+
 	local visualize = if Config.VisualizeRays then true else self.Visualize
-	
+
 	local raycastResult = RaycastUtil:Cast(self.Origin, self.Direction, self.MaxParts, self.Params, filterCheck, visualize)
 	if raycastResult.RaycastResult then
 		self.Result = {}
@@ -167,7 +166,7 @@ function SimpleRay.new(raycastOptions: RaycastOptions)
 	if Config.Debug then
 		warn("DONE_CASTING_RAY: " .. tick())
 	end
-	
+
 	return self
 end
 
@@ -178,7 +177,7 @@ function SimpleRay.GetFilterCheck(checks: table)
 			table.insert(filterChecks, filterCheckData[2])
 		end
 	end
-	
+
 	local function filterCheck(inst: Instance)
 		for i, filter in ipairs(filterChecks) do
 			if not filter(inst) then
@@ -187,12 +186,14 @@ function SimpleRay.GetFilterCheck(checks: table)
 		end
 		return true
 	end
-	
+
 	return filterCheck
 end
 
 --[=[
-    Returns the SimpleRay [result](http://localhost:3000/SimpleRay/api/SimpleRay#Result). Similar to [RaycastResult](https://create.roblox.com/docs/reference/engine/datatypes/RaycastResult).
+	@return table
+
+	Returns the SimpleRay [result](http://localhost:3000/SimpleRay/api/SimpleRay#Result). Similar to [RaycastResult](https://create.roblox.com/docs/reference/engine/datatypes/RaycastResult).
 ]=]
 function SimpleRay:GetResult()
 	return self.Result
