@@ -15,18 +15,18 @@ local RaycastUtil = {}
 function RaycastUtil:Cast(origin: Vector3, direction: Vector3, maxParts: number?, params: table, filter: () -> ()?, visualize: boolean?)
 	maxParts = maxParts or 1
 	visualize = visualize or false
-	
+
 	local parts = {}
 	local lastRaycastResult
 	local currentRay = 0
-	
+
 	local raycastParams = RaycastParams.new()
 	raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
 	raycastParams.FilterDescendantsInstances = { workspace.Terrain.SimpleRayDebug }
 	raycastParams.IgnoreWater = params.IgnoreWater or false
-	
+
 	raycastParams.FilterDescendantsInstances = TableUtil.Extend(raycastParams.FilterDescendantsInstances, params.Blacklist)
-	
+
 	while task.wait() do
 		local raycastResult = workspace:Raycast(origin, direction, raycastParams)
 		if raycastResult and raycastResult.Instance then
@@ -51,7 +51,7 @@ function RaycastUtil:Cast(origin: Vector3, direction: Vector3, maxParts: number?
 			break
 		end
 	end
-	
+
 	if visualize and lastRaycastResult then
 		self:VisualizeRay(origin, lastRaycastResult.Position, 2)
 		for i, part in ipairs(parts) do
@@ -66,7 +66,7 @@ function RaycastUtil:Cast(origin: Vector3, direction: Vector3, maxParts: number?
 			print("HIT_PART: " .. lastRaycastResult.Instance.Name)
 		end
 	end
-	
+
 	return {
 		Parts = parts,
 		RaycastResult = lastRaycastResult
@@ -84,9 +84,9 @@ end
 ]=]
 function RaycastUtil:VisualizeRay(origin: Vector3, position: Vector3, time: number, color: Color3?)
 	color = color or Color3.fromRGB(255, 0, 0)
-	
+
 	local distance = (origin - position).Magnitude
-	
+
 	local function ball(name: string)
 		local ball = Instance.new("Part")
 		ball.Name = name
@@ -97,10 +97,10 @@ function RaycastUtil:VisualizeRay(origin: Vector3, position: Vector3, time: numb
 		ball.Material = Enum.Material.Neon
 		ball.Position = Vector3.new(-6.75, 18.5, -1.34)
 		ball.Size = Vector3.new(0.25, 0.25, 0.25)
-		
+
 		return ball
 	end
-	
+
 	local ray = Instance.new("Part")
 	ray.Name = "Ray"
 	ray.Anchored = true
@@ -111,13 +111,13 @@ function RaycastUtil:VisualizeRay(origin: Vector3, position: Vector3, time: numb
 	ray.Transparency = 0.7
 	ray.Material = Enum.Material.Neon
 	ray.Parent = workspace.Terrain.SimpleRayDebug
-	
+
 	local originBall, positionBall = ball("Origin"), ball("Position")
 	originBall.Position, positionBall.Position = origin, position
 	originBall.Parent, positionBall.Parent = ray, ray
-	
+
 	Debris:AddItem(ray, time)
-	
+
 	return ray
 end
 
