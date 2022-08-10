@@ -1,5 +1,8 @@
 gitSourceBranch = "main"
-changelog = true
+classOrder = [
+    "SimpleRay",
+    "RaycastUtil"
+]
 
 [home]
 enabled = true
@@ -15,9 +18,3 @@ description = "The library has a variety of features such as custom part filters
 [[home.features]]
 title = "Easy debugging"
 description = "Easily visualize rays with this library."
-
-classOrder = [
-    "SimpleRay",
-    "RaycastUtil",
-    "TableUtil"
-]
