@@ -1,6 +1,13 @@
 {
-    "name": "SimpleRay",
-    "tree": {
-      "$path": "src"
-    }
+  "name": "SimpleRay",
+  "tree": {
+	  "$className": "DataModel",
+
+	  "ReplicatedStorage": {
+	    "$className": "ReplicatedStorage",
+	    "SimpleRay": {
+		    "$path": "src"
+	    }
+	  }
   }
+}
