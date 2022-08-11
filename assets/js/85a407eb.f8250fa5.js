@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[637],{3891:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/SyntaxRbx/SimpleRay/blob/master","baseUrl":"/SimpleRay/","classOrder":[],"apiCategories":[]}')}}]);
