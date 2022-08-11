@@ -9,3 +9,4 @@ tagline = "Raycasting module for Roblox"
 
 [home]
 enabled = true
+includeReadme = true
