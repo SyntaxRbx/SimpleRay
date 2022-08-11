@@ -193,7 +193,7 @@ end
 --[=[
 	@return table
 
-	Returns the SimpleRay [result](http://localhost:3000/SimpleRay/api/SimpleRay#Result). Similar to [RaycastResult](https://create.roblox.com/docs/reference/engine/datatypes/RaycastResult).
+	Returns the SimpleRay [result](https://syntaxrbx.github.io/SimpleRay/api/SimpleRay#Result). Similar to [RaycastResult](https://create.roblox.com/docs/reference/engine/datatypes/RaycastResult).
 ]=]
 function SimpleRay:GetResult()
 	return self.Result
