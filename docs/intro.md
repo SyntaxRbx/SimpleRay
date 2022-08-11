@@ -10,4 +10,4 @@ SimpleRay is a simple module to make raycasting easier and provide more features
 
 ## About the documentation
 
-Keep in mind, this documentation is still a work in progress, the information may not be complete.
+Keep in mind, this documentation is still a work in progress, information may not be complete.
