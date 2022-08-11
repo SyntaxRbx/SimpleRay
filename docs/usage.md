@@ -4,7 +4,9 @@ sidebar_position: 3
 
 # Usage
 
-```lua title="Example"
+## Example
+
+```lua
 local SimpleRay = require(game.ReplicatedStorage.SimpleRay)
 
 local origin = Vector3.new(0, 0, 0)
