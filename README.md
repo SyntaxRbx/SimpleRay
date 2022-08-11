@@ -3,7 +3,6 @@
   <p>Simple module for raycasting on Roblox.</p>
   <a href="https://syntaxrbx.github.io/SimpleRay/"><strong>View docs</strong></a>
 </div>
-<!--moonwave-hide-before-this-line-->
 
 ## Usage
 
