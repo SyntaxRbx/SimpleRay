@@ -3,6 +3,8 @@ classOrder = [
     "SimpleRay",
     "RaycastUtil"
 ]
+
+[docusaurus]
 tagline = "Raycasting module for Roblox"
 
 [home]
