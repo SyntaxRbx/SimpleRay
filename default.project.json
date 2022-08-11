@@ -2,11 +2,14 @@
   "name": "SimpleRay",
   "tree": {
 	  "$className": "DataModel",
+    "$ignoreUnknownInstances": true,
 
 	  "ReplicatedStorage": {
 	    "$className": "ReplicatedStorage",
+      "$ignoreUnknownInstances": true,
 	    "SimpleRay": {
-		    "$path": "src"
+		    "$path": "src",
+        "$ignoreUnknownInstances": true
 	    }
 	  }
   }
